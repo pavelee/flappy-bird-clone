@@ -1,0 +1,221 @@
+[gd_scene load_steps=16 format=3 uid="uid://ppc1hct28tcv"]
+
+[ext_resource type="Script" uid="uid://coy85wgwmcojo" path="res://ui/ui.gd" id="1_ks8t7"]
+[ext_resource type="LabelSettings" uid="uid://cmj8a3tc6y0ar" path="res://label_72.tres" id="1_nb4k0"]
+[ext_resource type="Texture2D" uid="uid://dhcfq1juug1ru" path="res://Assets/Sprites/UI/textGetReady.png" id="3_wl5ax"]
+[ext_resource type="Texture2D" uid="uid://c42nhwabeqalv" path="res://Assets/Sprites/UI/tapTick.png" id="4_vkava"]
+[ext_resource type="Texture2D" uid="uid://i226rtrqfqpn" path="res://Assets/Sprites/UI/textGameOver.png" id="5_tf0e0"]
+[ext_resource type="Texture2D" uid="uid://bs0v2bu31y61k" path="res://Assets/Sprites/UI/UIbg.png" id="6_obcwv"]
+[ext_resource type="Texture2D" uid="uid://duxaechd3165o" path="res://Assets/Sprites/UI/buttonLarge.png" id="7_bo1jx"]
+[ext_resource type="LabelSettings" uid="uid://b28nsrtx8d4wy" path="res://label_35_yellow.tres" id="7_pa1oa"]
+[ext_resource type="Texture2D" uid="uid://b2akkjgeahful" path="res://Assets/Sprites/UI/medalBronze.png" id="8_ay4pc"]
+[ext_resource type="LabelSettings" uid="uid://ci4k4owj3eykn" path="res://label_40_num.tres" id="9_ay4pc"]
+[ext_resource type="FontFile" uid="uid://due6jbyye53ld" path="res://Assets/Fonts/font_score.ttf" id="11_bi8hs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hrmpd"]
+font = ExtResource("11_bi8hs")
+font_size = 50
+outline_size = 16
+outline_color = Color(0.549299, 0.222755, 0.130949, 1)
+
+[sub_resource type="Animation" id="Animation_vkava"]
+resource_name = "menu"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/StartMenu/TextureRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_tf0e0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/StartMenu/TextureRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obcwv"]
+_data = {
+&"RESET": SubResource("Animation_tf0e0"),
+&"menu": SubResource("Animation_vkava")
+}
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ks8t7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "0"
+label_settings = ExtResource("1_nb4k0")
+
+[node name="StartMenu" type="Control" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/StartMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 73.0
+grow_horizontal = 2
+texture = ExtResource("3_wl5ax")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vkava")
+
+[node name="GameOver" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GameOver"]
+layout_mode = 2
+texture = ExtResource("5_tf0e0")
+
+[node name="BG" type="TextureRect" parent="MarginContainer/GameOver"]
+layout_mode = 2
+texture = ExtResource("6_obcwv")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GameOver/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/GameOver/BG/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "medal"
+label_settings = ExtResource("7_pa1oa")
+horizontal_alignment = 1
+
+[node name="Medal  Img" type="TextureRect" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("8_ay4pc")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Score"
+label_settings = ExtResource("7_pa1oa")
+horizontal_alignment = 1
+
+[node name="CurrentScore" type="Label" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("9_ay4pc")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Best"
+label_settings = ExtResource("7_pa1oa")
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="MarginContainer/GameOver/BG/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("9_ay4pc")
+horizontal_alignment = 1
+
+[node name="OkButton" type="TextureButton" parent="MarginContainer/GameOver"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("7_bo1jx")
+
+[node name="Label" type="Label" parent="MarginContainer/GameOver/OkButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OK"
+label_settings = SubResource("LabelSettings_hrmpd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_obcwv")
+}
+autoplay = "menu"
+
+[connection signal="pressed" from="MarginContainer/GameOver/OkButton" to="." method="_on_ok_button_pressed"]
