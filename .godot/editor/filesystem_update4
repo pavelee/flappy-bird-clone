@@ -1,11 +1,11 @@
-res://scenes/main/main.tscn
+res://ui/ui.tscn
+res://label_72.tres
+res://label_35_yellow.tres
+res://label_40_num.tres
 res://scenes/player/player.tscn
+res://scenes/main/main.tscn
 res://scenes/obstacle/obstacle.tscn
 res://scenes/spawner/spawner.tscn
 res://scenes/ground/ground.tscn
-res://scenes/spawner/spawner.gd
-res://scenes/obstacle/obstacle.gd
-res://scenes/main/main.gd
-res://ui/ui.tscn
-res://label_72.tres
 res://ui/ui.gd
+res://scenes/main/main.gd
