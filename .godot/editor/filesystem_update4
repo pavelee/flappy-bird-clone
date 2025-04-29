@@ -9,3 +9,6 @@ res://scenes/spawner/spawner.tscn
 res://scenes/ground/ground.tscn
 res://ui/ui.gd
 res://scenes/main/main.gd
+res://default_bus_layout.tres
+res://scenes/player/player.gd
+res://scenes/obstacle/obstacle.gd

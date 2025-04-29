@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://do2n8mspte2if"]
+[gd_scene load_steps=7 format=3 uid="uid://do2n8mspte2if"]
 
 [ext_resource type="Script" uid="uid://vkkiu7bpptdw" path="res://scenes/obstacle/obstacle.gd" id="1_phb0t"]
 [ext_resource type="Texture2D" uid="uid://cqejf74ebsjqx" path="res://Assets/Sprites/rockSnowDown.png" id="1_utmkd"]
 [ext_resource type="Texture2D" uid="uid://dtfi2ha7ihubr" path="res://Assets/Sprites/rockSnow.png" id="2_qlgnj"]
+[ext_resource type="AudioStream" uid="uid://btxwdnahv1gc" path="res://Assets/Audio/sfx_hit.wav" id="4_ckc2h"]
+[ext_resource type="AudioStream" uid="uid://c6ebci6361y4v" path="res://Assets/Audio/sfx_point.wav" id="5_8qciu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osovj"]
 size = Vector2(20, 135)
@@ -38,6 +40,16 @@ rect = Rect2(-10, -40, 20, 80)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
 position = Vector2(53.5, 5)
 shape = SubResource("RectangleShape2D_osovj")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ckc2h")
+volume_db = -15.0
+bus = &"sfx"
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8qciu")
+volume_db = -15.0
+bus = &"sfx"
 
 [connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]

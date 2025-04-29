@@ -6,6 +6,7 @@ var SAVE_FILE: String = "user://score.save"
 @onready var player: Player = $Player
 @onready var ground: Ground = $Ground
 @onready var ui: UI = $UI
+@onready var game_over_audio: AudioStreamPlayer2D = $GameOverAudio
 
 var score := 0
 var high_score := 0
@@ -34,6 +35,7 @@ func end_game() -> void:
 		save_highscore(high_score)
 	ui.calculate_score(score, high_score)
 	ui.game_over()
+	game_over_audio.play()
 
 func load_highscore() -> int:
 	var hs = 0
